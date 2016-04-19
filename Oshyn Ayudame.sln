@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oshyn.Ayudame.Dal", "Oshyn.Ayudame.Dal\Oshyn.Ayudame.Dal.csproj", "{190320AC-0C78-4395-ABBC-B8D54DE2D577}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oshyn.Adyudame.Web", "Oshyn.Adyudame.Web\Oshyn.Adyudame.Web.csproj", "{F3E40954-D6CF-4E15-AF28-F210C2FC8EDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{190320AC-0C78-4395-ABBC-B8D54DE2D577}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{190320AC-0C78-4395-ABBC-B8D54DE2D577}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{190320AC-0C78-4395-ABBC-B8D54DE2D577}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{190320AC-0C78-4395-ABBC-B8D54DE2D577}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3E40954-D6CF-4E15-AF28-F210C2FC8EDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3E40954-D6CF-4E15-AF28-F210C2FC8EDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3E40954-D6CF-4E15-AF28-F210C2FC8EDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3E40954-D6CF-4E15-AF28-F210C2FC8EDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
