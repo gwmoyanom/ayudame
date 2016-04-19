@@ -249,7 +249,16 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Oshyn.Ayudame.Core\Oshyn.Ayudame.Core.csproj">
+      <Project>{fa0e1225-efc0-4ce4-bf60-93ec6d6892da}</Project>
+      <Name>Oshyn.Ayudame.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Oshyn.Ayudame.Dal\Oshyn.Ayudame.Dal.csproj">
+      <Project>{3ba26ba0-9dd5-48c7-b94f-18759b1f378c}</Project>
+      <Name>Oshyn.Ayudame.Dal</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

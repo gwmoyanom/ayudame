@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Oshyn.Ayudame.Dal;
+using System.Data.Entity.Spatial;
 
 namespace Oshyn.Ayudame.Core
 {
@@ -16,7 +13,11 @@ namespace Oshyn.Ayudame.Core
         }
 
 
-
+        public Request Create(int mobileUserId, string title, string description, DbGeography location)
+        {
+            // Add business rules here if needed
+            return requestRepository.Create(mobileUserId, title, description, location);
+        }
 
 
     }

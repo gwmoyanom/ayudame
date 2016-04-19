@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="900d817c312b4401a773675be410db9e" Name="Diagram1">
+        <EntityTypeShape EntityType="AyudameDbModel.ElementCatalog" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyudameDbModel.Element" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyudameDbModel.MobileUser" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyudameDbModel.Request" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyudameDbModel.StateHistory" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="AyudameDbModel.FK_ElementElementCatalog" ManuallyRouted="false" />
+        <AssociationConnector Association="AyudameDbModel.FK_ItemStateHistory" ManuallyRouted="false" />
+        <AssociationConnector Association="AyudameDbModel.FK_RequesterItem" ManuallyRouted="false" />
+        <AssociationConnector Association="AyudameDbModel.FK_RequestMobileUser" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

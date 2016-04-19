@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Oshyn.Ayudame.Dal")]
+[assembly: AssemblyTitle("Oshyn.Ayudame.Core.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Oshyn.Ayudame.Dal")]
+[assembly: AssemblyProduct("Oshyn.Ayudame.Core.Test")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("3ba26ba0-9dd5-48c7-b94f-18759b1f378c")]
+[assembly: Guid("81668b17-fc9c-4a72-bcbf-bc253a52719a")]
 
 // Version information for an assembly consists of the following four values:
 //
