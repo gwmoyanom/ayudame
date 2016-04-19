@@ -23,12 +23,10 @@ namespace Oshyn.Ayudame.Dal
         public int Id { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
-        public string AndroidId { get; set; }
+        public string MobileId { get; set; }
         public string Email { get; set; }
         public byte[] Photo { get; set; }
-        public string DocumentId { get; set; }
         public int RoleId { get; set; }
-        public string MobileId { get; set; }
         public string LastName { get; set; }
         public string MobileType { get; set; }
     

@@ -28,6 +28,7 @@ namespace Oshyn.Ayudame.Core
             using (var db = dbContext)
             {
                 db.MobileUsers.Add(mobileUser);
+                db.SaveChanges();
             }
 
             return mobileUser;

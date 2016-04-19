@@ -5,30 +5,11 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="AyudameDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ElementCatalogs">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Elements">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RequestId" Type="int" Nullable="false" />
-          <Property Name="CurrentState" Type="int" Nullable="false" />
-          <Property Name="Other" Type="nvarchar(max)" />
-          <Property Name="ElementCatalogId" Type="int" Nullable="false" />
-          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
         <EntityType Name="MobileUsers">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MobileId" Type="nvarchar" MaxLength="50" />
@@ -43,8 +24,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Longitude" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Latitude" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Geolocation" Type="geography" Nullable="false" />
           <Property Name="CategoryId" Type="int" />
           <Property Name="CreateDate" Type="datetime2" Precision="7" Nullable="false" />
@@ -52,53 +31,6 @@
           <Property Name="MobileUserId" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
-        <EntityType Name="StateHistories">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Order" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="State" Type="int" Nullable="false" />
-          <Property Name="ItemId" Type="bigint" Nullable="false" />
-          <Property Name="CreationDate" Type="datetime" Nullable="false" />
-          <Property Name="ModifyDate" Type="datetime" />
-        </EntityType>
-        <Association Name="FK_ElementElementCatalog">
-          <End Role="ElementCatalogs" Type="Self.ElementCatalogs" Multiplicity="1" />
-          <End Role="Elements" Type="Self.Elements" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ElementCatalogs">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Elements">
-              <PropertyRef Name="ElementCatalogId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ItemStateHistory">
-          <End Role="Elements" Type="Self.Elements" Multiplicity="1" />
-          <End Role="StateHistories" Type="Self.StateHistories" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Elements">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="StateHistories">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RequesterItem">
-          <End Role="Requests" Type="Self.Requests" Multiplicity="1" />
-          <End Role="Elements" Type="Self.Elements" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Requests">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Elements">
-              <PropertyRef Name="RequestId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_RequestMobileUser">
           <End Role="MobileUsers" Type="Self.MobileUsers" Multiplicity="1" />
           <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
@@ -112,23 +44,8 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="AyudameDbModelStoreContainer">
-          <EntitySet Name="ElementCatalogs" EntityType="Self.ElementCatalogs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Elements" EntityType="Self.Elements" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MobileUsers" EntityType="Self.MobileUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Requests" EntityType="Self.Requests" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="StateHistories" EntityType="Self.StateHistories" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_ElementElementCatalog" Association="Self.FK_ElementElementCatalog">
-            <End Role="ElementCatalogs" EntitySet="ElementCatalogs" />
-            <End Role="Elements" EntitySet="Elements" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ItemStateHistory" Association="Self.FK_ItemStateHistory">
-            <End Role="Elements" EntitySet="Elements" />
-            <End Role="StateHistories" EntitySet="StateHistories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RequesterItem" Association="Self.FK_RequesterItem">
-            <End Role="Requests" EntitySet="Requests" />
-            <End Role="Elements" EntitySet="Elements" />
-          </AssociationSet>
           <AssociationSet Name="FK_RequestMobileUser" Association="Self.FK_RequestMobileUser">
             <End Role="MobileUsers" EntitySet="MobileUsers" />
             <End Role="Requests" EntitySet="Requests" />
@@ -138,184 +55,72 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AyudameDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="ElementCatalog">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Elements" Relationship="Self.FK_ElementElementCatalog" FromRole="ElementCatalogs" ToRole="Elements" />
-        </EntityType>
-        <EntityType Name="Element">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RequestId" Type="Int32" Nullable="false" />
-          <Property Name="CurrentState" Type="Int32" Nullable="false" />
-          <Property Name="Other" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ElementCatalogId" Type="Int32" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ElementCatalog" Relationship="Self.FK_ElementElementCatalog" FromRole="Elements" ToRole="ElementCatalogs" />
-          <NavigationProperty Name="StateHistories" Relationship="Self.FK_ItemStateHistory" FromRole="Elements" ToRole="StateHistories" />
-          <NavigationProperty Name="Request" Relationship="Self.FK_RequesterItem" FromRole="Elements" ToRole="Requests" />
-        </EntityType>
+        <EntityContainer Name="AyudameDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MobileUsers" EntityType="AyudameDbModel.MobileUser" />
+          <EntitySet Name="Requests" EntityType="AyudameDbModel.Request" />
+          <AssociationSet Name="FK_RequestMobileUser" Association="AyudameDbModel.FK_RequestMobileUser">
+            <End Role="MobileUser" EntitySet="MobileUsers" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="MobileUser">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AndroidId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="DocumentId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Requests" Relationship="Self.FK_RequestMobileUser" FromRole="MobileUsers" ToRole="Requests" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MobileId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MobileType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Requests" Relationship="AyudameDbModel.FK_RequestMobileUser" FromRole="MobileUser" ToRole="Request" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Longitude" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Latitude" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Geolocation" Type="Geography" Nullable="false" />
           <Property Name="CategoryId" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MobileUserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Elements" Relationship="Self.FK_RequesterItem" FromRole="Requests" ToRole="Elements" />
-          <NavigationProperty Name="MobileUser" Relationship="Self.FK_RequestMobileUser" FromRole="Requests" ToRole="MobileUsers" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MobileUser" Relationship="AyudameDbModel.FK_RequestMobileUser" FromRole="Request" ToRole="MobileUser" />
         </EntityType>
-        <EntityType Name="StateHistory">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Order" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="State" Type="Int32" Nullable="false" />
-          <Property Name="ItemId" Type="Int64" Nullable="false" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Element" Relationship="Self.FK_ItemStateHistory" FromRole="StateHistories" ToRole="Elements" />
-        </EntityType>
-        <Association Name="FK_ElementElementCatalog">
-          <End Role="ElementCatalogs" Type="Self.ElementCatalog" Multiplicity="1" />
-          <End Role="Elements" Type="Self.Element" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ElementCatalogs">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Elements">
-              <PropertyRef Name="ElementCatalogId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ItemStateHistory">
-          <End Role="Elements" Type="Self.Element" Multiplicity="1" />
-          <End Role="StateHistories" Type="Self.StateHistory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Elements">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="StateHistories">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RequesterItem">
-          <End Role="Requests" Type="Self.Request" Multiplicity="1" />
-          <End Role="Elements" Type="Self.Element" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Requests">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Elements">
-              <PropertyRef Name="RequestId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_RequestMobileUser">
-          <End Role="MobileUsers" Type="Self.MobileUser" Multiplicity="1" />
-          <End Role="Requests" Type="Self.Request" Multiplicity="*" />
+          <End Type="AyudameDbModel.MobileUser" Role="MobileUser" Multiplicity="1" />
+          <End Type="AyudameDbModel.Request" Role="Request" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MobileUsers">
+            <Principal Role="MobileUser">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Requests">
+            <Dependent Role="Request">
               <PropertyRef Name="MobileUserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AyudameDbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ElementCatalogs" EntityType="Self.ElementCatalog" />
-          <EntitySet Name="Elements" EntityType="Self.Element" />
-          <EntitySet Name="MobileUsers" EntityType="Self.MobileUser" />
-          <EntitySet Name="Requests" EntityType="Self.Request" />
-          <EntitySet Name="StateHistories" EntityType="Self.StateHistory" />
-          <AssociationSet Name="FK_ElementElementCatalog" Association="Self.FK_ElementElementCatalog">
-            <End Role="ElementCatalogs" EntitySet="ElementCatalogs" />
-            <End Role="Elements" EntitySet="Elements" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ItemStateHistory" Association="Self.FK_ItemStateHistory">
-            <End Role="Elements" EntitySet="Elements" />
-            <End Role="StateHistories" EntitySet="StateHistories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RequesterItem" Association="Self.FK_RequesterItem">
-            <End Role="Requests" EntitySet="Requests" />
-            <End Role="Elements" EntitySet="Elements" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RequestMobileUser" Association="Self.FK_RequestMobileUser">
-            <End Role="MobileUsers" EntitySet="MobileUsers" />
-            <End Role="Requests" EntitySet="Requests" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="AyudameDbModelStoreContainer" CdmEntityContainer="AyudameDbEntities">
-          <EntitySetMapping Name="ElementCatalogs">
-            <EntityTypeMapping TypeName="AyudameDbModel.ElementCatalog">
-              <MappingFragment StoreEntitySet="ElementCatalogs">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Elements">
-            <EntityTypeMapping TypeName="AyudameDbModel.Element">
-              <MappingFragment StoreEntitySet="Elements">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
-                <ScalarProperty Name="CurrentState" ColumnName="CurrentState" />
-                <ScalarProperty Name="Other" ColumnName="Other" />
-                <ScalarProperty Name="ElementCatalogId" ColumnName="ElementCatalogId" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="MobileUsers">
             <EntityTypeMapping TypeName="AyudameDbModel.MobileUser">
               <MappingFragment StoreEntitySet="MobileUsers">
                 <ScalarProperty Name="MobileType" ColumnName="MobileType" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="MobileId" ColumnName="MobileId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MobileId" ColumnName="MobileId" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -323,26 +128,12 @@
             <EntityTypeMapping TypeName="AyudameDbModel.Request">
               <MappingFragment StoreEntitySet="Requests">
                 <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-                <ScalarProperty Name="Geolocation" ColumnName="Geolocation" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="MobileUserId" ColumnName="MobileUserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="StateHistories">
-            <EntityTypeMapping TypeName="AyudameDbModel.StateHistory">
-              <MappingFragment StoreEntitySet="StateHistories">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Geolocation" ColumnName="Geolocation" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Order" ColumnName="Order" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

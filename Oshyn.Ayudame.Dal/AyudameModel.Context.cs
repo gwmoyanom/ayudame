@@ -25,10 +25,7 @@ namespace Oshyn.Ayudame.Dal
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ElementCatalog> ElementCatalogs { get; set; }
-        public virtual DbSet<Element> Elements { get; set; }
         public virtual DbSet<MobileUser> MobileUsers { get; set; }
         public virtual DbSet<Request> Requests { get; set; }
-        public virtual DbSet<StateHistory> StateHistories { get; set; }
     }
 }

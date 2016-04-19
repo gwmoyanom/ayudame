@@ -81,20 +81,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AyudameModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Element.cs">
-      <DependentUpon>AyudameModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ElementCatalog.cs">
-      <DependentUpon>AyudameModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="MobileUser.cs">
       <DependentUpon>AyudameModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request.cs">
-      <DependentUpon>AyudameModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StateHistory.cs">
       <DependentUpon>AyudameModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

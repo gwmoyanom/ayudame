@@ -1,10 +1,5 @@
 ﻿using Oshyn.Ayudame.Dal;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity.Spatial;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Oshyn.Ayudame.Core.Test
@@ -26,7 +21,7 @@ namespace Oshyn.Ayudame.Core.Test
 
             var lon = 0;
             var lat = 0;
-            var id = 1721890208; // For test, user previously created
+            var id = 1690908746; // For test, user previously created
 
             var point = string.Format("POINT({0} {1})", lon, lat);
 

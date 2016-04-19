@@ -26,7 +26,8 @@ namespace Oshyn.Ayudame.Core
                 MobileUserId = mobileUserId,
                 Title = title,
                 Description = description,
-                Geolocation = location
+                Geolocation = location,
+                CreateDate = DateTime.UtcNow
             };
 
             using (var db = dbContext)

@@ -14,15 +14,7 @@ namespace Oshyn.Ayudame.Dal
     
     public partial class Request
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Request()
-        {
-            this.Elements = new HashSet<Element>();
-        }
-    
         public int Id { get; set; }
-        public decimal Longitude { get; set; }
-        public decimal Latitude { get; set; }
         public System.Data.Entity.Spatial.DbGeography Geolocation { get; set; }
         public Nullable<int> CategoryId { get; set; }
         public System.DateTime CreateDate { get; set; }
@@ -30,8 +22,6 @@ namespace Oshyn.Ayudame.Dal
         public int MobileUserId { get; set; }
         public string Title { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Element> Elements { get; set; }
         public virtual MobileUser MobileUser { get; set; }
     }
 }
